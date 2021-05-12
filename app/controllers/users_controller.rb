@@ -1,12 +1,11 @@
-class GossipsController < ApplicationController 
+class UsersController < ApplicationController
   #def index
     #@gossips = Gossip.all
   #end
 
 
-
   def index
-    @gossips = Gossip.all
+    @users = User.all
   end
 
   def new
@@ -14,23 +13,11 @@ class GossipsController < ApplicationController
   end
 
   def create
-    #Récupération des champs du formulaire
-    @post = Gossip.new(
-      'title' => params[:title],
-      'content' => params[:content],
-      'user_id' => User.all.sample.id,
-      'tag_id' => Tag.all.sample.id
-    )
-    if @post.save
-      redirect_to gossips_path
-    else 
-      render "new"
-    end
-  
+   
   end
 
   def show
-    @gossip = Gossip.find(params[:id])
+    @user = User.find(params[:id])
     # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   end
 

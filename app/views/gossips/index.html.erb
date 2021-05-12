@@ -1,11 +1,26 @@
 <div class="mt-3">
-        <%= link_to "Ajouter un potin", new_gossip_path, class: "btn btn-primary" %>
-    </div>
+    <p><strong> Tu souhaites ajouter un potin ? </strong>
+    <%= link_to "Cliques ICI ! ", new_gossip_path, class: "btn btn-primary" %>
+    </p>
+</div>
 
-    <% @gossips.each_with_index do |gossip, index| %>
-      <tr>
-        <td><%= gossip.user.first_name %></td>
-        <td><%= gossip.title %></td>
-      </tr>
-    <% end %>
+    <br>
+    <br>
+    <h1><u> Banque des potins </u></h1>
+
+<% @gossips.each do |gossip| %>
+      
+    <h6><%= gossip.title %></h6>
+    <p><%= gossip.content %></p>
+    <p>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Description du potin</a>
+    
+    </p>
+      
+<% end %>
+    
+
+
+
+    
     
