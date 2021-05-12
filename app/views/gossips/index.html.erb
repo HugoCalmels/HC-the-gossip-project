@@ -1,0 +1,11 @@
+<div class="mt-3">
+        <%= link_to "Ajouter un potin", new_gossip_path, class: "btn btn-primary" %>
+    </div>
+
+    <% @gossips.each_with_index do |gossip, index| %>
+      <tr>
+        <td><%= gossip.user.first_name %></td>
+        <td><%= gossip.title %></td>
+      </tr>
+    <% end %>
+    
