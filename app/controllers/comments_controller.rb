@@ -13,10 +13,9 @@ class CommentsController < ApplicationController
   end
  
 
-  def create
-    puts "$" *60
+  def create 
     
-    puts "$" *60
+
     @post = Comment.new(
       'content' => params[:content],
       'user_id' => session[:user_id],
