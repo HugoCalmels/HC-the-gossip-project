@@ -20,7 +20,7 @@ class GossipsController < ApplicationController
     @post = Gossip.new(
       'title' => params[:title],
       'content' => params[:content],
-      'user_id' => User.all.sample.id,
+      'user_id' => session[:user_id],
       'tag_id' => Tag.all.sample.id
     )
     if @post.save

@@ -1,24 +1,27 @@
 class CommentsController < ApplicationController 
-  #def index
-    #@gossips = Gossip.all
-  #end
+
 
 
   def index
     @comments = Comment.all
+    @gossip = Gossip.all
+    
   end
 
   def new
     # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
   end
+ 
 
   def create
-   
+    puts "$" *60
+    
+    puts "$" *60
     @post = Comment.new(
       'content' => params[:content],
-      'user_id' => User.all.sample.id,
-      'comment_type_id' => params[:gossip_id],
-      'comment_type_type' => Gossip
+      'user_id' => session[:user_id],
+      'comment_type_id' => 1,
+      'comment_type_type' => Comment
     )
    
     if @post.save

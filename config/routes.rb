@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'sessions/new'
   get '/contact', to: 'static_pages#contact'
   get '/team', to: 'static_pages#team'
   get '/index', to: "static_pages#index"
@@ -9,5 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :index, :show, :edit, :update]
   resources :cities, only: [:new, :create, :index, :show, :edit, :update]
   resources :comments, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :sessions
+  
   
 end

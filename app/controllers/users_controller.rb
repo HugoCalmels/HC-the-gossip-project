@@ -6,13 +6,40 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
   end
 
   def new
+    
     # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
   end
 
   def create
+     city = City.find_by(name: params[:city])
+    @user = User.new(
+      'email' => params[:email],
+      'password' => params[:password],
+      'first_name' => params[:first_name],
+      'last_name' => params[:last_name],
+      'describtion' => params[:describtion],
+      'age' => params[:age],
+      'city' => city
+    )
+      puts "%" * 60
+      puts @user.city
+      puts @user.age
+      puts @user.first_name
+      puts @user.last_name
+      puts @user.email
+      puts @user.describtion
+      puts @user.password
+      puts city
+      puts "%" * 60
+    if @user.save
+      redirect_to gossips_path
+    else 
+      render "new"
+    end
    
   end
 

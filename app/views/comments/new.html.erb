@@ -1,11 +1,7 @@
 
-<form action= <%= users_path %> <%= comments_path %> method="POST">
+<form action= <%= comments_path %> method="POST">
 <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
   <div>
-  <label for="lname">Prénom</label>
-  <input type="text" id="first_name" name="first_name">
-  <label for="lname">Nom</label>
-  <input type="text" id="last_name" name="content">
   <label for="lname">Content</label>
   <input type="text" id="content" name="content">
   </div>
