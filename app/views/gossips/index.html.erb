@@ -1,7 +1,15 @@
-<div class="mt-3">
-    <p><strong> Tu souhaites ajouter un potin ? </strong>
-    <%= link_to "Cliques ICI ! ", new_gossip_path, class: "btn btn-primary" %>
-    </p>
+<style>
+.jumbotron{
+  heigt: 10vh;
+  background-position: center;
+}
+</style>
+
+<div class="jumbotron">
+    <h1 class="display-4"> Salut et bienvenue sur mon site de potins ! </h1>
+    <p class="lead"> Tu peux créer ton potin, et il sera automatiquement ajouté à la base de données.</p>
+    <hr class="my-4">
+    <%= link_to "Cliques ICI pour créer ton potin !", new_gossip_path, class: "btn btn-primary" %>
 </div>
 
     <br>
@@ -9,14 +17,14 @@
     <h1><u> Banque des potins </u></h1>
 
 <% @gossips.each do |gossip| %>
-      
-    <h6><%= gossip.title %></h6>
-    <p><%= gossip.content %></p>
     <p>
-    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Description du potin</a>
-    
+    <strong>Titre</strong> : <%= gossip.title %>, <strong>Contenu</strong> : <%= gossip.content %>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">description</a>
+    <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-success">editer</a>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-confirm="etes vous sur?" data-method="DELETE" >supprimer</a>
     </p>
-      
+
+    <br>
 <% end %>
     
 

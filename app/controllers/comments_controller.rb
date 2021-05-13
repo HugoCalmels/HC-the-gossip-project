@@ -1,11 +1,11 @@
-class UsersController < ApplicationController 
+class CommentsController < ApplicationController 
   #def index
     #@gossips = Gossip.all
   #end
 
 
   def index
-    @users = User.all
+    @comments = Comment.all
   end
 
   def new
@@ -14,10 +14,23 @@ class UsersController < ApplicationController
 
   def create
    
+    @post = Comment.new(
+      'content' => params[:content],
+      'user_id' => User.all.sample.id,
+      'comment_type_id' => params[:gossip_id],
+      'comment_type_type' => Gossip
+    )
+   
+    if @post.save
+      redirect_to gossips_path
+    else
+      
+      render "new"
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    @comment = Comment.find(params[:id])
     # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   end
 

@@ -1,11 +1,24 @@
 
+<h2> Gossip number <%= @id %> </h2>
+
 <h5> Titre : <%= @gossip.title %> </h5>
 
 <p> Contenu : <%= @gossip.content %> </p>
 
-<p> Auteur : <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p>
+<p> Auteur : <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> 
+<%= link_to " description auteur ", user_path, class: "btn btn-primary" %> </p>
 
-<p> Ville : <%= @gossip.user.city.name %> </p>
+<p> Ville : <%= @gossip.user.city.name %> 
+<%= link_to " page de la ville ", city_path, class: "btn btn-primary" %> </p>
+<br>
+<%= link_to " créer un nouveau commentaire ", new_comment_path, class: "btn btn-success" %>
+<p> Commentaires :  <% @gossip.comments.each do |comment| %>
+  <%= comment.content %> 
+  <br>
+  Auteur :
+  <%= User.find(@gossip.user.id).first_name %> 
+  <%= User.find(@gossip.user.id).last_name %>
+  <% end %>
 
 
 

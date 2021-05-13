@@ -1,11 +1,11 @@
-class UsersController < ApplicationController 
+class CitiesController < ApplicationController 
   #def index
     #@gossips = Gossip.all
   #end
 
 
   def index
-    @users = User.all
+    @cities = City.all
   end
 
   def new
@@ -17,7 +17,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    puts "$" * 60
+    @city = City.find(params[:id])
+    puts "$" * 60
+    puts @city.name
+    puts "$" * 60
+    #puts Gossip.user_id.all
+    
+    puts "$" * 60
+    # if @city.name = gossip.user.city.name 
     # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   end
 
